@@ -5,7 +5,7 @@
 var shakometer = {
 	//this manages the shakometer stuff
 	
-	motionInterval: 300, 
+	motionInterval: 5000, 
 	//set the interval in ms that you want to check for shaking over 
 	//devicemotion events fire hundreds of times a second, and provcessing each one will chew battery life
 	lastMotionEvent: 0, // as yet we've had none, keeps track of when we had the last motion event

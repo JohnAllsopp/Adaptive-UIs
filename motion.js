@@ -51,12 +51,19 @@ var shakometer = {
 
 
 			if (shakometer.wasShaken(motionData.acceleration.x, motionData.acceleration.y, motionData.acceleration.z)){
-				document.querySelector('form').className = "shaken"
-				//we change the class name of the containing form, and so our shaken styles apply
+				
+				if (document.body.classList) {
+					document.body.classList.add("shaken")
+					document.body.classList.remove("regular")
+				}
+				//we change the class name of the containing body, and so our shaken styles apply
 			}
 			
 			else {
-				document.querySelector('form').className = "regular"
+				if (document.body.classList) {
+					document.body.classList.add("regular")
+					document.body.classList.remove("shaken")
+				}
 				//we change the class name of the containing form, and so our regular styles apply	
 			}
 

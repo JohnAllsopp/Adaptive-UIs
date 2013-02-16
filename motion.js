@@ -50,38 +50,39 @@ var shakometer = {
 	motionHandler: function (motionData){
 		//an event handler for the deviceOrientation event
 		var today = new Date();
-
+		var isShaking = false;
+		
 		if((today.getTime() - shakometer.lastMotionEvent) > shakometer.motionInterval){	
 			//we don't need to check for shakes all that frequently
 			//devicemotion fires hundreds of times a second, sowe can save batter life by checking less frequently
 
 
-			if (shakometer.wasShaken(motionData.acceleration.x, motionData.acceleration.y, motionData.acceleration.z)){
+			isShaking = shakometer.wasShaken(motionData.acceleration.x, motionData.acceleration.y, motionData.acceleration.z)
 				
-				//we know the device is shaking, but do we change the state yet?
-				//check how long since we changed the state, and if this exceeds shakometer.remainInState then change it
-				
-				if((today.getTime() - shakometer.lastStateChange) > shakometer.remainInState){	
-					
-					shakometer.lastStateChange = today.getTime()
-					//record when this state change ocurred
-				
-					if (document.body.classList) {
-						document.body.classList.add("shaken")
-						document.body.classList.remove("regular")
-					}
-					//we change the class name of the containing body, and so our shaken styles apply
+			//we know the device is shaking, but do we change the state yet?
+			//check how long since we changed the state, and if this exceeds shakometer.remainInState then change it
 			
-					else {
-						if (document.body.classList) {
-							document.body.classList.add("regular")
-							document.body.classList.remove("shaken")
-						}
-						//we change the class name of the containing form, and so our regular styles apply	
-					}
+			if((today.getTime() - shakometer.lastStateChange) > shakometer.remainInState){	
+				
+				shakometer.lastStateChange = today.getTime()
+				//record when this state change ocurred
+				
+				if (isShaking) {
+					var newClass = "shaken";
+					var oldClass = "regular"
 				}
-			}
-			
+				
+				else {
+					var newClass = "regular";
+					var oldClass = "shaken"
+				}
+				
+				if (document.body.classList) {
+					document.body.classList.add(newClass)
+					document.body.classList.remove(oldClass)
+				}
+				//we change the class name of the containing body, and so our shaken styles apply
+			}			
 
 			console.log(shakometer.wasShaken(motionData.acceleration.x, motionData.acceleration.y, motionData.acceleration.z) + " " + (today.getTime() - shakometer.lastMotionEvent))
 			//for debugging

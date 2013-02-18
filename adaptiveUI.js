@@ -1,13 +1,13 @@
 //the functionality of the UI
 
-var adaptiveUI = {
+var keyPad = {
 
  	addEventHandlers: function (){
 		//add event handlers to buttons
 		var buttons = document.querySelectorAll('button')
 		
 		for (var i=0; i < buttons.length; i++) {
-			buttons[i].addEventListener("click", adaptiveUI.tapButton, false)
+			buttons[i].addEventListener("click", keyPad.tapButton, false)
 		};
 		
 	},
@@ -39,4 +39,4 @@ var adaptiveUI = {
 
 }
 
-window.addEventListener("load", adaptiveUI.addEventHandlers, false)
+window.addEventListener("load", keyPad.addEventHandlers, false)

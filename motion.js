@@ -16,9 +16,9 @@ var adaptiveUI = {
 	
 	lastMotionEvent: 0, // as yet we've had none, keeps track of when we had the last motion event
 	
-	remainInState: 10000,
+	remainInState: 5000,
 	//when a change in state is detected (e.g. from shaking to non shaking or the other way)
-	//how long before we change the state of the UI in ms
+	//how long before we changerespind to this change (in ms)
 	
 	lastStateChange: 0, // time the state was last changed from shaking to non-shaking or the other way 
 	

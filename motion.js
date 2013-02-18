@@ -94,7 +94,7 @@ var adaptiveUI = {
 				//record when this state change ocurred
 				
 				if (adaptiveUI.changeCallback) {
-					adaptiveUI.changeCallback.call(adaptiveUI)
+					adaptiveUI.changeCallback.call()
 					//if there's a callback function, call it with the adaptiveUI object
 				}	
 			}			
@@ -111,9 +111,11 @@ window.addEventListener("load", adaptiveUI.start, false)
 
 //add an event listener for the window load event, which installs the adaptiveUI
 
-function handleStateChange(aUI){
+function handleStateChange(){
+	//this is an example handler for state changes.
+	//you can write your own and add it as the callback like below  
 	
-	if (aUI.isShaking >= 0.5) {
+	if (adaptiveUI.isShaking >= 0.5) {
 		var newClass = "shaken";
 		var oldClass = "regular"
 	}

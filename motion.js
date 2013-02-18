@@ -91,7 +91,7 @@ var adaptiveUI = {
 				adaptiveUI.lastStateChange = today.getTime()
 				//record when this state change ocurred
 				
-				if (isShaking >= 0.5) {
+				if (adaptiveUI.isShaking >= 0.5) {
 					var newClass = "shaken";
 					var oldClass = "regular"
 				}

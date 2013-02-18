@@ -10,6 +10,8 @@ var adaptiveUI = {
 	//adaptiveUI object 
 	//use this to respond to device motion
 	
+	changeCallback: null, //set a callback function which is called when the state is changed
+	
 	motionInterval: 500, 
 	//set the interval in ms that you want to check for shaking over 
 	//devicemotion events fire hundreds of times a second, and provcessing each one will chew battery life
@@ -91,21 +93,10 @@ var adaptiveUI = {
 				adaptiveUI.lastStateChange = today.getTime()
 				//record when this state change ocurred
 				
-				if (adaptiveUI.isShaking >= 0.5) {
-					var newClass = "shaken";
-					var oldClass = "regular"
-				}
-				
-				else {
-					var newClass = "regular";
-					var oldClass = "shaken"
-				}
-				
-				if (document.body.classList) {
-					document.body.classList.add(newClass)
-					document.body.classList.remove(oldClass)
-				}
-				//we change the class name of the containing body, and so our shaken styles apply
+				if (adaptiveUI.changeCallback) {
+					adaptiveUI.changeCallback.call(adaptiveUI)
+					//if there's a callback function, call it with the adaptiveUI object
+				}	
 			}			
 			
 			adaptiveUI.lastMotionEvent = today.getTime()
@@ -117,4 +108,26 @@ var adaptiveUI = {
 }
 
 window.addEventListener("load", adaptiveUI.start, false)
+
 //add an event listener for the window load event, which installs the adaptiveUI
+
+function handleStateChange(aUI){
+	
+	if (aUI.isShaking >= 0.5) {
+		var newClass = "shaken";
+		var oldClass = "regular"
+	}
+
+	else {
+		var newClass = "regular";
+		var oldClass = "shaken"
+	}
+
+	if (document.body.classList) {
+		document.body.classList.add(newClass)
+		document.body.classList.remove(oldClass)
+	}
+	//we change the class name of the containing body, and so our shaken styles apply
+}
+
+adaptiveUI.changeCallback = handleStateChange;

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Responsive User Experiences</title>
+</head>
+<body>
+<h1>Responsive Web Experiences</h1>
+
+<p>There's no hotter adjective in web design right now than "responsive", but this time the hype is no doubt merited. The term "Responsive Web Design", coined by Ethan Marcotte in May 2010, but with roots far older, more than anything named a phenomenon that had been gaining momentum for some time, just as Jesse James Garrett's coining of the term Ajax gave a name to a technique of web app development which helped kick start the web app revolution.</p>
+
+<p>But as important as RWD is, it still focusses on the visual, on screen sizes and resolutions, and how to make a design work seamlessly across a broad range of devices.</p>
+
+<p>At the heart of RWD is the media query, a wonderful CSS feature that allows us to tailor a design based on the display characteristics of a device. Most commonly it's used to ensure designs can adapt to the width (and to a lesser degree height) and screen resolution of a device.</p>
+
+<p>RWD is something we spoke about for many years before Ethan coined the term, indeed Ethan generously quotes my "A Dao of Web Design" from April 2000. What made something largely theoretically interesting practically important was, above all else, the rise o a genuinely usable mobile web, which I'd argue was ushered in by the release of the iPhone.</p>
+
+<p>But, the iPhone, and subsequent panoply of other sophisticated mobile and later tablet platforms didn't only bring different screen sizes and resolutions. Their revolution wasn't only visual. On board these devices typically have</p>
+
+<ul>
+	<li>accelerometer (that allow developers to determine how the device is moving in 3 dimensional space)</li>
+	<li>gyroscopes (that allow us to determine how a device is oriented, bot just in portrait or landscape, but in a full three dimensions)</li>
+	<li>GPS chips, (or wifi triangulation) that allow us to pinpoint the location on earth of these devices to within meters most places they are likely to go</li>
+</ul>
+
+<p>In recent years, more and more of these device capabilities have been made available to web developers with various Device APIs. We've all heard about them, but likely we've pigeon-holed their as being for developers of mapping systems, games, and similar complex apps, but of no real use for "everyday" web design. I'd like you to rethink this.</p>
+
+<p>Just as Responsive Web Design is about tailoring designs to the physical characteristics of a device, particularly it's screen, I'm interested in how we can tailor a design to the physical context of the device.</p>
+
+<p>Using the various device APIs, we can know, or at least guess at all sorts of things about the user's context</p>
+
+<ul>
+	<li>are they travelling in a car?</li>
+	<li>is their device quite still, or shaking dramatically?</li>
+	<li>is the device lying flat on a surface, or being held in a hand</li>
+	<li>is the user walking? Running? Riding a bicycle?</li>
+</ul>
+
+<p>We can determine all these sorts of thing about a user using these device APIs alone.</p>
+
+<p>Throw a few web based APIs into the mix (such as a mapping API, weather API) and we can start making guesses about a whole lot of other things about them. Are they on a train? a bus? In their office?</p>
+
+<p>But what's the point? Particularly for "everyday web designs". Right now, tailoring a design based on screen characteristics is a definite improvement over what came before. But what if we could tailor a design for people who suffer from tremors, so that buttons or links became much easier to hit when a phone was shaking significantly (this would also benefit users without such a physical condition strap hanging on their commute to work). Or, what if we could adapt our designs to only show the most cogent information (headlines at a news site) while a user were running?</p>
+
+<p>Sounds complicated? Certainly, we have to go beyond CSS media queries, but I've done some of the heavy lifting for you, with a proof of concept JavaScript library, AdaptiveUI, and examples.</p>
+
+<p>In this first iteration, AdaptiveUI can determine whether the device is shaking (perhaps because of a medical condition the user has, perhaps because of the current physical context of the user, but the net result is the same, there'll be actions it's harder to perform than is the phone we held in a stable way).</p>
+
+<p>If AdaptiveUI determines that the phone is shaking, it adds the value <code>shaking</code> to the list of classNames for the body (and similarly, if it isn't shaking, it adds a different class value). Then, all we need to do is use this to style elements differently </p>
+ 
+
+</body>
+</html>

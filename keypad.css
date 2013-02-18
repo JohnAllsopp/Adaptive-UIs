@@ -32,12 +32,13 @@ button {
 	background-image: -webkit-linear-gradient(-90deg,#303030 0%,#262626 100%);
 	color: #ffffff; 
 	width: 33.3333%;
-	height: 3em;
+	height: 2em;
 	font-size: 1.3em;
 box-shadow: 0 0 0 red;
 border-style: none;
 border-left: solid thin #222;
-border-bottom: solid thin #222}
+border-bottom: solid thin #222;
+}
 
 button:active {
 	background-image: -webkit-linear-gradient(-90deg,#262626 0%,#303030 100%); 
@@ -45,8 +46,8 @@ button:active {
 
 .shaken  button {
 	width: 50%;
-	height: 3em;
-	font-size: 1.5em; 
+	/*height: 3em;*/
+	font-size: 1.43em; 
 }
 
 button#call {

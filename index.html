@@ -13,12 +13,12 @@
 
 <p>At the heart of RWD is <a href="http://www.w3.org/TR/css3-mediaqueries">media query</a>, a wonderful CSS feature that allows us to tailor a design based on the display characteristics of a device. Most commonly it's used to ensure designs can adapt to the width (and to a lesser degree height) and screen resolution of a device.</p>
 
-<p>RWD is something we spoke about for many years before Ethan coined the term, indeed Ethan generously quotes my "<a href="http://alistapart.com/article/dao">A Dao of Web Design</a>" from April 2000in the article he wrote for A List Apart which introduced the term. What made this for a long time largely theoretically interesting  topic <em>practically</em> important was, above all else, the rise of a genuinely usable mobile web, which I'd argue was ushered in by the release of the iPhone.</p>
+<p>RWD is something we spoke about for many years before Ethan coined the term, indeed Ethan generously quotes my "<a href="http://alistapart.com/article/dao">A Dao of Web Design</a>" from April 2000 in the article he wrote for A List Apart which introduced the term. What made this for a long time largely theoretically interesting  topic <em>practically</em> important was, above all else, the rise of a genuinely usable mobile web, which I'd argue was ushered in by the release of the iPhone.</p>
 
 <p>But the iPhone, and the subsequent panoply of other sophisticated mobile and later tablet platforms didn't only bring different screen sizes and resolutions. Their revolution wasn't only visual. They made the use of the web start happening in all sorts of places it rarely if ever had taken place before. And, on board these devices typically have</p>
 
 <ul>
-	<li>accelerometer (that allow developers to determine how the device is moving in 3 dimensional space)</li>
+	<li>accelerometers (that allow developers to determine how the device is moving in 3 dimensional space)</li>
 	<li>gyroscopes (that allow us to determine how a device is oriented, bot just in portrait or landscape, but in a full three dimensions)</li>
 	<li>GPS chips, (or wifi triangulation) that allow us to pinpoint the location on earth of these devices to within meters most places they are likely to go</li>
 	<li>magnetometer (in essence a compass)</li>
@@ -77,6 +77,23 @@
 
 <p>Again, a proof of concept, rather than a design I'd stake my life on.</p>
 
+<h2>How it works</h2>
+
+<p>In a nutshell, adaptiveUI works like this</p>
+
+<ul>
+	<li>We link to adaptiveUI.js from any web page</li>
+	<li>From our page we start adaptiveUI, giving it a function that it will call when the state of adaptiveUI changes (for example when it detects motion)</li>
+	<li>When adaptiveUI detects motion (we'll look at how it does this in detail in a moment) it calls our callback function</li>
+	<li>In our callback function we query adaptiveUI as to whether it is shaking, and if it is, we add the class "shaken" to the body of the page, or if it is not, we remove this class</li>
+	<li>The layout of our telephone keyboard changes depending on whether the class is shaken or not</li>
+</ul>
+
+<p>But in our callback we could ask whether the user is walking, or in a car, or a number of other questions about their current context (right now, detecting these hasn't yet been implemented), and respond any way we liked to that state.</p>
+
+<h3>Yeah, but what about the details</h3>
+
+<p>OK, so how do we do all this? Quite simply,it's all about the deviceMotion (and deviceOrientation) events</p>
 <h2>Next Steps</h2>
 
 <p>The next steps for AdaptiveUI is to broaden the range of contexts it can provide information about. So, it will be able to provide a guess, and degree of confidence, for whether a user is walking, running, travelling in a car, and other common circumstances.</p>

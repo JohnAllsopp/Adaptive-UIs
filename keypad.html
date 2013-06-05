@@ -6,8 +6,44 @@
 
 	<title>Adaptive UIs</title>
 <link rel="stylesheet" type="text/css" href="keypad.css"  />	
-<script src="motion.js"></script>
 <script src="adaptiveUI.js"></script>
+<script src="keypad.js"></script>
+
+<script>
+
+window.addEventListener("load", initialize, false)
+//add an event listener for the window load event, which installs the adaptiveUI
+
+
+function initialize(){
+	//initialize the adaptiveUI
+	
+	adaptiveUI.start(handleStateChange)
+}
+
+function handleStateChange(){
+	//this is an example handler for state changes.
+	//you can write your own and add it as the callback like below  
+	
+	if (adaptiveUI.isShaking >= 0.5) {
+		var newClass = "shaken";
+		var oldClass = "regular"
+	}
+
+	else {
+		var newClass = "regular";
+		var oldClass = "shaken"
+	}
+
+	if (document.body.classList) {
+		document.body.classList.add(newClass)
+		document.body.classList.remove(oldClass)
+	}
+	//we change the class name of the containing body, and so our shaken styles apply
+}
+
+adaptiveUI.changeCallback = handleStateChange;
+</script>
 
 </head>
 <body class="shaken">
